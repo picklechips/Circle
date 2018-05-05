@@ -1,0 +1,50 @@
+<div class="row"></div>
+<div class="row">
+	<div class="col m4 hide-on-small-only">
+		{{> _create-post-card}}
+	</div>
+	<div class="col s12 m8">
+	{{#each posts}}
+		<div class="card">
+			<div class="card-content">
+				<div class="card-title">
+					<div class="chip">
+						<img src="/img/default-user.png">
+						{{user.firstName}} {{user.lastName}}
+					</div>
+					<div class="divider"></div>
+					{{title}}
+				</div>
+				<div class="">
+					{{stripTags (truncate body 350)}}
+				</div>
+				<br>
+				<div class="grey-text">
+					{{formatDate createdAt 'MMMM do YYYY, h:mma'}}
+					<i>{{#ifNotEq createdAt updatedAt}}(edited {{formatDate updatedAt 'MMMM do YYYY, h:mma'}}){{/ifNotEq}}</i>
+					</div>
+			</div>
+			<div class="card-action">
+				<a href="/posts/show/{{id}}" class="red-text">read more</a>
+				<a href="/posts/edit/{{id}}" class="red-text">edit</a>
+			</div>
+		</div>
+	{{else}}
+		<div class="card">
+			<div class="card-content">
+				<div class="card-title">
+					You have nothing to see!
+				</div>
+				<p>Here are some things to get you started</p>
+			</div>
+			<div class="card-action">
+				<a href="/user/edit/:id" class="red-text">Update profile</a>
+				<a href="/circles/index" class="red-text">find circles</a>
+				<a href="/users/index" class="red-text">find friends</a>
+				<a href="/posts/add" class="red-text">first post</a>
+				<a href="/circles/add" class="red-text">create circle</a>
+			</div>
+		</div>
+	</div>
+	{{/each}}
+</div>

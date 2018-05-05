@@ -1,0 +1,59 @@
+<div class="row"></div>
+<div class="row">
+	<div class="col s12 m5 l4">
+		<div class="card large white darken-1">
+			<div class="card-content red-text">
+				<span class="card-title">Register</span>
+				<form action="/users/register" method="post">
+					<div class="input-field col s6">
+						<label for="firstName">First Name</label>
+						<input type="text" name="firstName" class="form-control" required="true" value="{{firstName}}">
+					</div>
+					<div class="input-field col s6">
+						<label for="lastName">Last Name</label>
+						<input type="text" name="lastName" class="form-control" required="true" value="{{lastName}}">
+					</div>
+					<div class="input-field col s12">
+						<label for="email">Email</label>
+						<input type="email" name="email" class="form-control" required="true" value="{{email}}">
+					</div>
+					<div class="input-field col s12">
+						<label for="password">Password</label>
+						<input type="password" name="password" class="form-control" required="true" value="{{password}}">
+					</div>
+					<div class="input-field col s12">
+						<label for="password2">Confirm Password</label>
+						<input type="password" name="password2" class="form-control" required="true" value="{{password2}}">
+					</div>
+					<div class="row"></div>
+					<div class="row"></div>
+					<button type="submit" class="btn red">Register</button>
+				</form>
+			</div>
+		</div>
+	</div>
+	<div class="col s12 m7 l8">
+		<div class="card large white darken-1">
+			<div class="card-image">
+				<img src="https://images.pexels.com/photos/414171/pexels-photo-414171.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940">
+				<span class="card-title">Get connected like never before</span>
+			</div>
+			<div class="card-content red-text">
+				<div class="row">
+					<div class="col s4 center">
+						<i class="material-icons" style="font-size:40px">add_a_photo</i>
+						<p class="black-text lighten-2">Public photos<br>Private photos<br>...<br>Choose.</p>
+					</div>
+					<div class="col s4 center">
+						<i class="material-icons" style="font-size:40px">chat</i>
+						<p class="black-text lighten-2">Lightning fast instant messaging<br>...<br>Private.</p>
+					</div>
+					<div class="col s4 center">
+						<i class="material-icons" style="font-size:40px">short_text</i>
+						<p class="black-text lighten-2">Share your thoughts<br>Write your thoughts<br>...<br>Reflect.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

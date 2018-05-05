@@ -1,0 +1,25 @@
+setup commands: 
+
+First install nodejs: https://nodejs.org/en/ -- This also installs the node package manager! (npm)
+
+Next, install nodemon (This automatically restarts the server every time a change is made)
+
+`npm install -g nodemon`
+
+To install node modules:
+
+`npm install --save express mongoose passport passport-local bcryptjs express-session body-parser connect-flash path moment method-override`
+
+What are these modules?
+express: Web framework
+mongoose: Object relational mapping (ORM) for node and mongodb
+passport: user authentication
+passport-local: The strategy we're using for passport
+bcryptjs: Encrypting passwords
+express-session: keeping track of current user
+body-parser: Used for parsing the request body
+express-handlebars: Template engine for WEB APP
+connect-flash: Enable flash messages from server
+path: Loading static files
+moment: formatting dates
+method-override: put and delete methods in html form

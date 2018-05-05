@@ -1,0 +1,27 @@
+<div class="row"></div>
+<div class="container">
+	<div class="row">
+		<div class="col s6 offset-s3">
+			<div class="card white darken-1">
+				<div class="card-image">
+					<img src="https://images.pexels.com/photos/414171/pexels-photo-414171.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940">
+					<span class="card-title">Login</span>
+				</div>
+				<div class="card-content red-text">
+					<form action="/users/login" method="post">
+						<div class="input-field col s12">
+							<label for="email">Email</label>
+							<input type="email" name="email" class="form-control" required="true" value="{{email}}">
+						</div>
+						<div class="input-field col s12">
+							<label for="password">Password</label>
+							<input type="password" name="password" class="form-control" required="true" value="{{password}}">
+						</div>
+						<button type="submit" class="btn red">Login</button>
+						<a href="/users/register" class="right" style="font-size:10px">Don't have an account?</a>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

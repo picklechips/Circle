@@ -1,0 +1,25 @@
+body {
+	display: flex;
+	min-height: 100vh;
+	flex-direction: column;
+}
+
+main {
+	flex: 1 0 auto;
+}
+
+.checkbox-red.filled-in[type="checkbox"] + label:after{
+     border: 2px solid red;
+     background: red;
+}
+
+.checkbox-red.filled-in[type="checkbox"]:checked + label:after{
+     background: red;
+}
+
+.checkbox-red.filled-in[type="checkbox"]:checked + label:before{
+    border-top: 2px solid transparent;
+    border-left: 2px solid transparent;
+    border-right: 2px solid #fff;
+    border-bottom: 2px solid #fff;
+}

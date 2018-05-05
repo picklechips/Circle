@@ -1,0 +1,27 @@
+<nav class="red" role="navigation">
+	<div class="nav-wrapper container">
+		<a id="logo-container" href="/" class="brand-logo center"><i class="material-icons">donut_large</i>Circle</a>
+		
+		<ul class="right hide-on-small-only">
+			{{#if user}}
+			<li><a href="/">Dashboard</a></li>
+			<li><a href="/users/logout">Logout</a></li>
+			{{else}}
+			<li><a href="/users/login">Login</a></li>
+			{{/if}}
+		</ul>
+
+		<ul id="main-menu" class="sidenav">
+			<li class="valign-wrapper">
+				<a class="red-text subheader" style="font-size: 30px"><i class="material-icons red-text">donut_large</i>Circle</a>
+			</li>
+			{{#if user}}
+			<li><a href="/">Dashboard</a></li>
+			<li><a href="/users/logout">Logout</a></li>
+			{{else}}
+			<li><a href="/users/login">Login</a></li>
+			{{/if}}
+		</ul>
+		<a href="#" data-target="main-menu" class="sidenav-trigger show-on-large"><i class="material-icons">menu</i></a>
+	</div>
+</nav>

@@ -1,0 +1,30 @@
+<div class="row">
+	<form action="/posts" method="post" class="col s12">
+		<h4>Create new Post</h4>
+		<div class="row">
+			<div class="input-field">
+				<input type="text" name="title">
+				<label for="title">Title</label>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="input-field">
+				<select name="status">
+					<option value="public" selected="true">Public</option>
+					<option value="private">Private</option>
+				</select>
+				<label for="status">Status</label>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="input-field">
+				<h5>Enter text</h5>
+				<textarea id="ckeditor" name="body"></textarea>
+			</div>
+		</div>
+
+		<input type="submit" value="Post" class="btn red">
+	</form>
+</div>
