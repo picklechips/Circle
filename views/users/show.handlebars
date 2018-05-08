@@ -1,0 +1,68 @@
+<div class="user-profile-container">
+	<div class="row">
+		<div class="col s12 m5">
+			<div class="card">
+				<div class="card-image">
+					<img src="data:image/jpeg;base64,{{formatImage thisUser.image}}" class="responsive-img">
+					<span class="card-title">{{thisUser.firstName}} {{thisUser.lastName}}</span>
+					{{#ifEq thisUser.id user.id}}
+					<form id="profImageForm" method="post" enctype="multipart/form-data" action="/users/{{user.id}}/profImage?_method=PUT">
+						<input type="hidden" name="_method" value="PUT">
+						<input name="profImage" id="profImageUpload" type="file" style="display:none;" accept="image/*">
+						<a class="btn-floating halfway-fab red" onclick="document.getElementById('profImageUpload').click();">
+							<i class="material-icons">edit</i>
+						</a>
+					</form>
+					{{/ifEq}}
+				</div>
+				<div class="card-action left-align">
+					<a href="/users/{{post.user.id}}">Add Friend</a>
+					<a href="/users/{{post.user.id}}">Invite to Circle</a>
+				</div>
+			</div>
+		</div>
+		<div class="col s12 m7">
+			<div class="card">
+				<div class="card-content">
+					{{#if thisUser.intro}}
+						<span class="card-title">Intro</span>
+					{{else}}
+						<span class="card-title">This user has not set an intro!</span>
+					{{/if}}
+					{{#if thisUser.intro}}
+						<p>{{thisUser.intro}}</p>
+					{{/if}}
+					{{#ifEq thisUser.id user.id}}
+						<a href="/users/{{user.id}}/intro/edit" class="btn-floating halfway-fab red">
+							<i class="material-icons">edit</i>
+						</a>
+					{{/ifEq}}
+				</div>
+			</div>
+		</div>
+		<div class="col s12 m7">
+			{{#if publicPosts}}
+			<div class="card">
+				<div class="card-content">
+					<span class="card-title">Public Activity</span>
+				</div>
+			</div>
+			{{/if}}
+			{{#each publicPosts}}
+			<div class="card">
+				<div class="card-content">
+					<span class="card-title">title</span>
+				</div>
+			</div>
+			{{else}}
+			<div class="card">
+				<div class="card-content">
+					<span class="card-title">This user has no public activity!</span>
+				</div>
+			</div>
+			{{/each}}
+		</div>
+	</div>
+	<div class="row">
+	</div>
+</div>

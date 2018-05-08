@@ -17,8 +17,11 @@ const UserSchema = new Schema({
 		type: String,
 		required: true
 	},
-	image: {
+	intro: {
 		type: String
+	},
+	image: {
+		type: Buffer
 	}
 }, {timestamps:true})
 

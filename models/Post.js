@@ -24,8 +24,12 @@ const PostSchema = new Schema({
 		commentUser: {
 			type: Schema.Types.ObjectId,
 			ref:'users'
+		},
+		commentDate: {
+			type: Date,
+			default: Date.now
 		}
-	}, {timestamps:true}],
+	}],
 	user: {
 		type: Schema.Types.ObjectId,
 		ref: 'users'

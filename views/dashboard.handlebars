@@ -9,8 +9,8 @@
 			<div class="card-content">
 				<div class="card-title">
 					<div class="chip">
-						<img src="/img/default-user.png">
-						{{user.firstName}} {{user.lastName}}
+						<img src="data:image/jpeg;base64,{{formatImage user.image}}">
+						<a href="/users/{{user.id}}" class="black-text lighten-4">{{user.firstName}} {{user.lastName}}</a>
 					</div>
 					<div class="divider"></div>
 					{{title}}
@@ -20,13 +20,27 @@
 				</div>
 				<br>
 				<div class="grey-text">
-					{{formatDate createdAt 'MMMM do YYYY, h:mma'}}
-					<i>{{#ifNotEq createdAt updatedAt}}(edited {{formatDate updatedAt 'MMMM do YYYY, h:mma'}}){{/ifNotEq}}</i>
-					</div>
+					{{formatDate createdAt 'MMMM Do YYYY, h:mma'}}
+					<i>{{#ifNotEq createdAt updatedAt}}(edited {{formatDate updatedAt 'MMMM Do YYYY, h:mma'}}){{/ifNotEq}}</i>
+				</div>
 			</div>
 			<div class="card-action">
-				<a href="/posts/show/{{id}}" class="red-text">read more</a>
-				<a href="/posts/edit/{{id}}" class="red-text">edit</a>
+					<a href="/posts/show/{{id}}" class="red-text">read more</a>
+					<a href="/posts/edit/{{id}}" class="red-text">edit</a>
+					<a href="#modal{{id}}" class="red-text modal-trigger">delete</a>
+				</form>
+			</div>
+		</div>
+		<div class="modal" id="modal{{id}}">
+			<div class="modal-content">
+				<form action="/posts/{{id}}?_method=DELETE" method="post" id="delete-form{{id}}" >
+						<input type="hidden" name="_method" value="DELETE">
+					<h5 class="center">Are you sure you want to delete this post?</h5>
+					<div class="center">
+						<button type="submit" class="btn red">Delete</button>
+						<button type="button" class="btn red modal-close">Cancel</button>
+					</div>
+				</form>
 			</div>
 		</div>
 	{{else}}

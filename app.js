@@ -6,6 +6,7 @@ const exphbs = require('express-handlebars');
 const bodyParser = require('body-parser');
 const flash = require('connect-flash');
 const path = require('path');
+const multer  = require('multer');
 const methodOverride = require('method-override')
 
 // Load helper funcs
@@ -13,8 +14,10 @@ const {
 	truncate,
 	stripTags,
 	formatDate,
+	formatImage,
 	select,
-	ifNotEq
+	ifNotEq,
+	ifEq
 } = require('./helpers/hbs');
 
 const app = express();
@@ -34,8 +37,10 @@ app.engine('handlebars', exphbs({
 		truncate: truncate,
 		stripTags: stripTags,
 		formatDate: formatDate,
+		formatImage: formatImage,
 		select: select,
-		ifNotEq: ifNotEq
+		ifNotEq: ifNotEq,
+		ifEq: ifEq
 	},
 	defaultLayout: 'main'
 }));

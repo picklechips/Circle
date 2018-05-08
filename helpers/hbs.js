@@ -1,4 +1,6 @@
 const moment = require('moment');
+const fs = require('fs');
+const path = require('path');
 
 module.exports = {
 	truncate: function(str, len) {
@@ -18,6 +20,14 @@ module.exports = {
 	formatDate: function(date, format) {
 		return moment(date).format(format);
 	},
+	formatImage: function(image) {
+		if (image)
+			return image.toString('base64');
+		else {
+			const imgpath = path.join(__dirname, '..', 'public', 'img', 'default-user.png');
+			return fs.readFileSync(imgpath, { encoding: 'base64' });
+		}
+	},
 	select: function(selected, options) {
 		return options.fn(this).replace(new RegExp(' value=\"' + selected + '\"'), '$& selected="selected"')
 			.replace(new RegExp('>' + selected + '</option>'), ' selected="selected"$&');
@@ -29,6 +39,12 @@ module.exports = {
 		}
 
 		if (obj1 !== obj2) {
+			return options.fn(this);
+		}
+		return options.inverse(this);
+	},
+	ifEq: function(obj1, obj2, options) {
+		if (obj1 === obj2) {
 			return options.fn(this);
 		}
 		return options.inverse(this);

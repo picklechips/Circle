@@ -8,18 +8,15 @@ main {
 	flex: 1 0 auto;
 }
 
-.checkbox-red.filled-in[type="checkbox"] + label:after{
-     border: 2px solid red;
-     background: red;
+.cover-photo {
+    position: relative;
 }
 
-.checkbox-red.filled-in[type="checkbox"]:checked + label:after{
-     background: red;
+.card.cover-photo .card-image {
+    max-height: 100%;
+    overflow: hidden;
 }
 
-.checkbox-red.filled-in[type="checkbox"]:checked + label:before{
-    border-top: 2px solid transparent;
-    border-left: 2px solid transparent;
-    border-right: 2px solid #fff;
-    border-bottom: 2px solid #fff;
+.user-profile-container {
+  
 }

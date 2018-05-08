@@ -3,6 +3,9 @@ const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
 const passport = require('passport');
 const router = express.Router();
+const multer  = require('multer')
+const upload = multer({ storage: multer.memoryStorage() })
+const {isAuth} = require('../helpers/auth');
 
 // Load model
 require('../models/User');
@@ -93,6 +96,27 @@ router.post('/register', (req, res) => {
 			}
 		});
 	}
+});
+
+// Show user profile
+router.get('/:id', isAuth, (req, res) => {
+	User.findOne({_id: req.params.id})
+	.then(user => {
+		res.render('users/show', { 
+			thisUser: user
+		});
+	})
+});
+
+router.put('/:id/profImage', upload.single('profImage'), isAuth, (req, res) => {
+	console.log(req.file);
+	User.findOne({_id: req.params.id})
+	.then(user => {
+		user.image = req.file.buffer;
+		user.save().then( user => {
+			res.redirect(`/users/${user.id}`);
+		});
+	});
 });
 
 module.exports = router;

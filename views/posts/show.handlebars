@@ -1,21 +1,75 @@
 <div class="row">
 	<div class="col s12 m8">
-		<h3>{{post.title}}</h3>
 		<div class="card post">
 			<div class="card-content">
-				<span class="card-title">{{formatDate post.createdAt 'MMMM Do YYYY'}}</span>
+				{{#if post.title}}
+					<span class="card-title"><h4>{{post.title}}</h4></span>
+				{{/if}}
 				{{{post.body}}}
+				<div class="grey-text">
+					{{formatDate post.createdAt 'MMMM Do YYYY, h:mma'}}
+					<i>{{#ifNotEq post.createdAt post.updatedAt}}(edited {{formatDate post.updatedAt 'MMMM Do YYYY, h:mma'}}){{/ifNotEq}}</i>
+				</div>
+			</div>
+		</div>
+
+		<div class="card">
+			<div class="card-content">
+				<span class="card-title">Comments</span>
+				<div class="divider"></div>
+				<div class="row"></div>
+				{{#if post.comments}}
+					{{#each post.comments}}
+						<div class="chip">
+							<img src="data:image/jpeg;base64,{{formatImage commentUser.image}}">
+							<a href="/users/{{commentUser.id}}" class="black-text lighten-4">{{commentUser.firstName}} {{commentUser.lastName}}</a>
+						</div>
+						<div class="grey-text right">
+							{{formatDate commentDate 'MMMM Do YYYY, h:mma'}}
+						</div>
+						<div class="row"></div>
+						<p>{{commentBody}}</p>
+						{{#ifEq ../user.id commentUser.id}}
+							<a href="#modal{{id}}" class="orange-text lighten-2 modal-trigger">DELETE</a>
+							<div class="modal" id="modal{{id}}">
+								<div class="modal-content">
+									<form action="/posts/{{../post.id}}/comment/{{id}}?_method=DELETE" method="post" id="delete-form{{id}}" >
+											<input type="hidden" name="_method" value="DELETE">
+										<h5 class="center">Are you sure you want to delete this comment?</h5>
+										<div class="center">
+											<button type="submit" class="btn red">Delete</button>
+											<button type="button" class="btn red modal-close">Cancel</button>
+										</div>
+									</form>
+								</div>
+							</div>
+						{{/ifEq}}
+						<div class="row"></div>
+						<div class="divider"></div>
+						<div class="row"></div>
+					{{/each}}
+				{{else}}
+					<p>There are no comments on this post!</p>
+					<div class="divider"></div>
+				{{/if}}
+				<form method="post" action="/posts/comment/{{post.id}}">
+					<div class="input-field">
+						<textArea class="materialize-textarea" name="commentBody"></textArea>
+						<label>Add comment</label>
+					</div>
+					<input type="submit" class="btn red">
+				</form>
 			</div>
 		</div>
 	</div>
 	<div class="col s12 m4">
 		<div class="card center-align">
-			<div class="card-content">
-				<span class="card-title">{{post.user.firstName}} {{post.user.lastName}}</span>
-				<img src="/img/default-user.png" class="circle responsive-img">
+			<div class="card-image">
+				<img src="data:image/jpeg;base64,{{formatImage user.image}}" class="responsive-img">
+				<span class="card-title">Posted by {{post.user.firstName}} {{post.user.lastName}}</span>
 			</div>
 			<div class="card-action">
-				<a href="posts/user/{{post.user.id}}">More from {{post.user.firstName}}</a>
+				<a href="/users/{{post.user.id}}">View Profile</a>
 			</div>
 		</div>
 	</div>
